@@ -1,5 +1,4 @@
-const { getBlogURLs } = require('./nuxt/getBlogURLs')
-
+const generatePayload = require('./nuxt/generatePayload')
 module.exports = {
   css: ['~/assets/sass/index.scss'],
   modules: ['~/modules/webpack-loaders'],
@@ -7,7 +6,7 @@ module.exports = {
     dir: 'docs',
     fallback: true,
     async routes() {
-      return [...getBlogURLs()]
+      return [...(await generatePayload())]
     }
   }
 }
